@@ -54,7 +54,7 @@ function solicitarIngreso(cadena){
 }
 
 function obtenerDescripcionPromptOperacion(){
-    return "CARRITO\n1. Agregar productos\n2. Eliminar productos\n3. Confirmar carrito\n\nOPERACIÓN";
+    return "CARRITO\n1. Agregar productos\n2. Confirmar carrito\n\nOPERACIÓN";
 }
 
 function obtenerDescripcionPromptAgregarProductos(detalleProductos){
@@ -109,12 +109,15 @@ function procesarAgregarProductos(){
             descripcionPromptProducto = obtenerDescripcionPromptProducto(productoEncontrado);
             cantidad = parseInt(solicitarIngreso(descripcionPromptProducto));
             if(cantidad <= productoEncontrado.cantidad){
-                productoEncontrado.cantidad -= cantidad;
-                const producto = new Producto(productoEncontrado.codigo, productoEncontrado.descripcion, productoEncontrado.precio*cantidad, cantidad);
-                cuponDescuento = solicitarIngreso(obtenerDescripcionPromptCupon());
-                descripcionDescuentoProducto = aplicarDescuento(cuponDescuento, producto);
-                informarEnConsola("Código: " + producto.codigo + "\nDescripción: " + producto.descripcion + "\nPrecio: ARS " + producto.precio + "\nDescuento: " + descripcionDescuentoProducto + "\nCantidad: " + producto.cantidad);
-                productosCarrito.push(producto);
+                if(cantidad != 0)
+                {
+                    productoEncontrado.cantidad -= cantidad;
+                    const producto = new Producto(productoEncontrado.codigo, productoEncontrado.descripcion, productoEncontrado.precio*cantidad, cantidad);
+                    cuponDescuento = solicitarIngreso(obtenerDescripcionPromptCupon());
+                    descripcionDescuentoProducto = aplicarDescuento(cuponDescuento, producto);
+                    informarEnConsola("Código: " + producto.codigo + "\nDescripción: " + producto.descripcion + "\nPrecio: ARS " + producto.precio + "\nDescuento: " + descripcionDescuentoProducto + "\nCantidad: " + producto.cantidad);
+                    productosCarrito.push(producto);
+                }
             }
             else{
                 alert("No hay stock para la cantidad solicitada.");
@@ -127,25 +130,20 @@ function procesarAgregarProductos(){
 
 
 
-
-
 //Comienzo
 cargarProductosEnStock();
 
 descripcionPrompt = obtenerDescripcionPromptOperacion();
 opcion = solicitarIngreso(descripcionPrompt);
-while(opcion != "3"){    
+while(opcion != "2"){    
     switch(opcion){
         case "1":
             procesarAgregarProductos();
             break;
-        
-        // case "2":
-        //     procesarEliminarProductos();
-        //     break;
 
         default:
             alert("La opción ingresada es incorrecta.");
+            break;
     }
 
     descripcionPrompt = obtenerDescripcionPromptOperacion();
