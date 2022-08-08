@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/estilos.css">
     <title>Home</title>    
 </head>
 <body class="body">
     <header class="header">
         <h2 class="header__logo">musica.com</h2>
-
-        <ul class="header__list">
-            <li class="header__item">
-                <a href="" class="header__anchor">
-                    Productos
-                </a>
-            </li>
-        </ul>
     </header>
 
     <main class="main">
-        <section class="seccion">
-            <h1 class="seccion__title">Compra de instrumentos musicales</h1>
+        <section class="seccionCarrito" id="seccionCarrito">
+            
+        </section>
+
+        <section class="seccionProductos" id="seccionProductos">
+            
         </section>
     </main>
 
@@ -31,6 +31,15 @@
         <h5 class="footer__copyright">Todos los derechos reservados</h5>
     </footer>
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
+        crossorigin="anonymous">
+    </script>
+
+    <script src="js/cargarSeccionProductos.js"></script>
+    
     <script src='js/administrarCarrito.js'></script>
 </body>
 </html>
